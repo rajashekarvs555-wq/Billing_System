@@ -18,6 +18,11 @@ class BillCreate(BaseModel):
     sgst: Decimal = 0
     igst: Decimal = 0
 
+    gst_type: str = "none"
+    cgst_pct: Decimal = 0
+    sgst_pct: Decimal = 0
+    igst_pct: Decimal = 0
+
     items: list[BillItemCreate]
 
 
@@ -30,6 +35,11 @@ class BillUpdate(BaseModel):
     cgst: Decimal = 0
     sgst: Decimal = 0
     igst: Decimal = 0
+
+    gst_type: str = "none"
+    cgst_pct: Decimal = 0
+    sgst_pct: Decimal = 0
+    igst_pct: Decimal = 0
 
     items: list[BillItemCreate]
 
@@ -44,6 +54,11 @@ class BillResponse(BaseModel):
     cgst: Decimal
     sgst: Decimal
     igst: Decimal
+
+    gst_type: str
+    cgst_pct: Decimal
+    sgst_pct: Decimal
+    igst_pct: Decimal
 
     tax_amount: Decimal
     grand_total: Decimal

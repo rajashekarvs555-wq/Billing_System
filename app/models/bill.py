@@ -64,6 +64,26 @@ class Bill(Base):
         default=0
     )
 
+    gst_type = Column(
+        String(30),
+        default='none'
+    )
+
+    cgst_pct = Column(
+        Numeric(12, 2),
+        default=0
+    )
+
+    sgst_pct = Column(
+        Numeric(12, 2),
+        default=0
+    )
+
+    igst_pct = Column(
+        Numeric(12, 2),
+        default=0
+    )
+
     tax_amount = Column(
         Numeric(12, 2),
         nullable=False

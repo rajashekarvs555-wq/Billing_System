@@ -70,6 +70,10 @@ class BillService:
             cgst=payload.cgst,
             sgst=payload.sgst,
             igst=payload.igst,
+            gst_type=payload.gst_type,
+            cgst_pct=payload.cgst_pct,
+            sgst_pct=payload.sgst_pct,
+            igst_pct=payload.igst_pct,
             tax_amount=tax_amount,
             grand_total=grand_total,
             notes=payload.notes
@@ -148,6 +152,10 @@ class BillService:
         bill.cgst = payload.cgst
         bill.sgst = payload.sgst
         bill.igst = payload.igst
+        bill.gst_type = payload.gst_type
+        bill.cgst_pct = payload.cgst_pct
+        bill.sgst_pct = payload.sgst_pct
+        bill.igst_pct = payload.igst_pct
 
         bill.subtotal = subtotal
         bill.tax_amount = tax_amount
