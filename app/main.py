@@ -10,6 +10,8 @@ from app.api.bills import router as bill_router
 from app.api.payments import router as payment_router
 from app.api.reports import router as report_router
 from app.api.auth import router as auth_router
+from app.api.vehicles import router as vehicles_router
+from app.api.materials import router as materials_router
 
 from app.database.init_db import (
     init_database
@@ -33,6 +35,8 @@ app.include_router(customer_router, prefix="/api")
 app.include_router(bill_router, prefix="/api")
 app.include_router(payment_router, prefix="/api")
 app.include_router(report_router, prefix="/api")
+app.include_router(vehicles_router, prefix="/api")
+app.include_router(materials_router, prefix="/api")
 
 class SPAStaticFiles(StaticFiles):
     async def get_response(self, path: str, scope):

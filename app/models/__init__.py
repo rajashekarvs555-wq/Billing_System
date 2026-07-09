@@ -3,3 +3,5 @@ from app.models.bill import Bill
 from app.models.bill_item import BillItem
 from app.models.payment import Payment
 from app.models.user import User
+from app.models.vehicle import Vehicle
+from app.models.material import Material

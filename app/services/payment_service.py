@@ -52,3 +52,45 @@ class PaymentService:
             .order_by(Payment.payment_date.desc())
             .all()
         )
+
+    @staticmethod
+    def update_payment(
+        db: Session,
+        payment_id: int,
+        payload: PaymentCreate,
+        user_id: int
+    ):
+        payment = (
+            db.query(Payment)
+            .filter(Payment.id == payment_id, Payment.user_id == user_id)
+            .first()
+        )
+        if not payment:
+            return None
+
+        payment.customer_id = payload.customer_id
+        payment.payment_date = payload.payment_date
+        payment.amount_received = payload.amount_received
+        payment.remarks = payload.remarks
+
+        db.commit()
+        db.refresh(payment)
+        return payment
+
+    @staticmethod
+    def delete_payment(
+        db: Session,
+        payment_id: int,
+        user_id: int
+    ) -> bool:
+        payment = (
+            db.query(Payment)
+            .filter(Payment.id == payment_id, Payment.user_id == user_id)
+            .first()
+        )
+        if not payment:
+            return False
+
+        db.delete(payment)
+        db.commit()
+        return True

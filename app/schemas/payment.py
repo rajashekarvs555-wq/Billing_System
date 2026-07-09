@@ -11,6 +11,13 @@ class PaymentCreate(BaseModel):
     remarks: str | None = None
 
 
+class PaymentUpdate(BaseModel):
+    customer_id: int
+    payment_date: date
+    amount_received: Decimal
+    remarks: str | None = None
+
+
 class PaymentResponse(BaseModel):
     id: int
     customer_id: int
