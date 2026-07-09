@@ -7,6 +7,14 @@ from app.schemas.payment import PaymentCreate
 class PaymentService:
 
     @staticmethod
+    def get_next_payment_no(db: Session, user_id: int) -> int:
+        from sqlalchemy import func
+        max_no = db.query(func.max(Payment.payment_no)).filter(Payment.user_id == user_id).scalar()
+        if max_no is None:
+            return 1
+        return max_no + 1
+
+    @staticmethod
     def create_payment(
         db: Session,
         payload: PaymentCreate,
@@ -18,7 +26,8 @@ class PaymentService:
             user_id=user_id,
             payment_date=payload.payment_date,
             amount_received=payload.amount_received,
-            remarks=payload.remarks
+            remarks=payload.remarks,
+            payment_no=PaymentService.get_next_payment_no(db, user_id)
         )
 
         db.add(payment)

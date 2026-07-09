@@ -15,6 +15,8 @@ class Payment(Base):
 
     id = Column(Integer, primary_key=True)
 
+    payment_no = Column(Integer, nullable=True)
+
     customer_id = Column(
         Integer,
         ForeignKey("customers.id"),

@@ -20,6 +20,7 @@ class PaymentUpdate(BaseModel):
 
 class PaymentResponse(BaseModel):
     id: int
+    payment_no: int | None = None
     customer_id: int
     payment_date: date
     amount_received: Decimal
